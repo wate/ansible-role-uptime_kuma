@@ -1,0 +1,13 @@
+# code: language=ansible
+---
+- name: Create/update systemd unit file
+  ansible.builtin.template:
+    src: uptime-kuma.service.j2
+    dest: /lib/systemd/system/uptime-kuma.service
+    mode: "0644"
+  notify: Restart uptime-kuma
+- name: Service uptime-kuma is active and enabled on system startup
+  ansible.builtin.systemd_service:
+    name: uptime-kuma
+    state: started
+    enabled: true

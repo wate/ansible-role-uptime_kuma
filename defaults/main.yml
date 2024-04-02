@@ -1,0 +1,12 @@
+---
+## -----------------
+## インストールするバージョン
+## -----------------
+uptime_kuma_version: latest
+
+## -----------------
+## Uptime Kumaの環境変数
+## -----------------
+uptime_kuma_cfg: {}
+#   NODE_ENV: production
+#   UPTIME_KUMA_WS_ORIGIN_CHECK: cors-like

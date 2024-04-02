@@ -1,0 +1,10 @@
+---
+uptime_kuma_dependency_packages:
+  - git
+  - nodejs
+
+uptime_kuma_repo: louislam/uptime-kuma
+
+uptime_kuma_home: /opt/uptime-kuma
+uptime_kuma_user: uptime-kuma
+uptime_kuma_group: uptime-kuma

@@ -1,0 +1,15 @@
+[Unit]
+Description=Uptime Kuma - A self-hosted monitoring tool
+After=network.service
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/default/uptime-kuma
+WorkingDirectory={{ uptime_kuma_home }}
+User={{ uptime_kuma_user }}
+Group={{ uptime_kuma_group }}
+ExecStart=/usr/bin/node server/server.js
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

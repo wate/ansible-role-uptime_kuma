@@ -1,0 +1,21 @@
+# code: language=ansible
+---
+- name: Install uptime-kuma dependency packages
+  ansible.builtin.apt:
+    name: "{{ uptime_kuma_dependency_packages | default([]) }}"
+- name: Add uptime-kuma group
+  ansible.builtin.group:
+    name: "{{ uptime_kuma_group }}"
+    system: true
+- name: Add uptime-kuma user
+  ansible.builtin.user:
+    name: "{{ uptime_kuma_user }}"
+    group: "{{ uptime_kuma_group }}"
+    system: true
+- name: Create install directory
+  ansible.builtin.file:
+    path: "{{ uptime_kuma_home }}"
+    owner: "{{ uptime_kuma_user }}"
+    group: "{{ uptime_kuma_group }}"
+    state: directory
+    mode: "0755"
