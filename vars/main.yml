@@ -1,6 +1,7 @@
 ---
 uptime_kuma_dependency_packages:
   - git
+  - acl
   - nodejs
 
 uptime_kuma_repo: louislam/uptime-kuma
