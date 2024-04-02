@@ -26,7 +26,7 @@ Uptime Kumaの環境変数
 Dependencies
 --------------
 
-- nodejs
+- [nodejs](https://github.com/wate/ansible-role-nodejs)
 
 Example Playbook
 --------------
