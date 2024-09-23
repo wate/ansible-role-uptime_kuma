@@ -11,3 +11,9 @@
     name: uptime-kuma
     state: started
     enabled: true
+- name: Allow uptime-kuma port
+  community.general.ufw:
+    rule: allow
+    port: "{{ uptime_kuma_cfg['UPTIME_KUMA_PORT'] | default(3001) }}"
+    proto: tcp
+  when: uptime_kuma_allow_connect_other_host | default(false)
