@@ -14,7 +14,7 @@
     system: true
 - name: Create install directory
   ansible.builtin.file:
-    path: "{{ uptime_kuma_home }}"
+    path: "{{ uptime_kuma_root }}"
     owner: "{{ uptime_kuma_user }}"
     group: "{{ uptime_kuma_group }}"
     state: directory

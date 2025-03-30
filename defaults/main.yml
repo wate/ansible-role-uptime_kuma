@@ -11,5 +11,3 @@ uptime_kuma_cfg: {}
   # NODE_ENV: production
   # UPTIME_KUMA_PORT: 3001
   # UPTIME_KUMA_WS_ORIGIN_CHECK: cors-like
-
-# uptime_kuma_allow_connect_other_host: false
