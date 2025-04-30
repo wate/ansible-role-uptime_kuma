@@ -33,7 +33,7 @@ Uptime Kumaの環境変数
 
 #### `uptime_kuma_repo`
 
-#### `uptime_kuma_home`
+#### `uptime_kuma_root`
 
 #### `uptime_kuma_user`
 
