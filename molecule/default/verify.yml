@@ -32,6 +32,8 @@
           ansible.builtin.assert:
             that:
               - user_result is not changed
+            fail_msg: "User uptime-kuma is not properly configured"
+            success_msg: "User uptime-kuma is properly configured"
     ## グループのテスト
     - name: Test group
       block:
@@ -45,6 +47,8 @@
           ansible.builtin.assert:
             that:
               - group_result is not changed
+            fail_msg: "Group uptime-kuma is not properly configured"
+            success_msg: "Group uptime-kuma is properly configured"
     ## ファイルのテスト
     - name: Test file
       block:
@@ -56,6 +60,8 @@
           ansible.builtin.assert:
             that:
               - env_file_result.stat.exists
+            fail_msg: "Environment file /etc/default/uptime-kuma not found"
+            success_msg: "Environment file /etc/default/uptime-kuma exists"
     # サービスのテスト
     - name: Assert service
       ansible.builtin.assert:
@@ -63,8 +69,12 @@
           - ansible_facts.services['uptime-kuma.service'] is defined
           - ansible_facts.services['uptime-kuma.service']['state'] == 'running'
           - ansible_facts.services['uptime-kuma.service']['status'] == 'enabled'
+        fail_msg: "uptime-kuma service is not running or not enabled"
+        success_msg: "uptime-kuma service is running and enabled"
     ## 待受ポートのテスト
     - name: Assert listen port
       ansible.builtin.assert:
         that:
           - 3001 in listen_tcp_posts
+        fail_msg: "Port 3001 is not listening"
+        success_msg: "Port 3001 is listening"
