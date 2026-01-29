@@ -22,33 +22,29 @@
     ## ユーザーのテスト
     - name: Test user
       block:
-        - name: Check user
-          ansible.builtin.user:
-            name: uptime-kuma
-            system: true
-          check_mode: true
-          register: user_result
+        - name: Get user facts
+          ansible.builtin.getent:
+            database: passwd
+            key: uptime-kuma
         - name: Assert user
           ansible.builtin.assert:
             that:
-              - user_result is not changed
-            fail_msg: "User uptime-kuma is not properly configured"
-            success_msg: "User uptime-kuma is properly configured"
+              - getent_passwd['uptime-kuma'] is defined
+            fail_msg: "User uptime-kuma does not exist"
+            success_msg: "User uptime-kuma exists"
     ## グループのテスト
     - name: Test group
       block:
-        - name: Check group
-          ansible.builtin.group:
-            name: uptime-kuma
-            system: true
-          check_mode: true
-          register: group_result
+        - name: Get group facts
+          ansible.builtin.getent:
+            database: group
+            key: uptime-kuma
         - name: Assert group
           ansible.builtin.assert:
             that:
-              - group_result is not changed
-            fail_msg: "Group uptime-kuma is not properly configured"
-            success_msg: "Group uptime-kuma is properly configured"
+              - getent_group['uptime-kuma'] is defined
+            fail_msg: "Group uptime-kuma does not exist"
+            success_msg: "Group uptime-kuma exists"
     ## ファイルのテスト
     - name: Test file
       block:
