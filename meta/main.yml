@@ -1,6 +1,7 @@
 ---
 galaxy_info:
   role_name: uptime_kuma
+  namespace: wate
   author: yoshiaki tanaka
   description: Setup Uptime Kuma
   license: Apache
